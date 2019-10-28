@@ -28,7 +28,7 @@ module ServiceDataEngine
     end
 
     def mdcs
-      require('mdcs')
+      request('mdcs')
     end
 
     def mdc_mdc_classes(mdc_number, type='medical')
