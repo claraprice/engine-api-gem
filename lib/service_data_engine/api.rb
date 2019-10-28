@@ -1,4 +1,4 @@
-require 'api_base'
+require 'service_data_engine/api_base'
 
 module ServiceDataEngine
   class Api < ApiBase
