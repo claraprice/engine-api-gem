@@ -1,8 +1,6 @@
-# ServiceDataEngine
+# Engine API Gem
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/service_data_engine`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Welcome! This application is a Ruby gem which provides a framework for interacting with the [Engine API](https://github.com/claraprice/engine-api).
 
 ## Installation
 
@@ -13,23 +11,33 @@ gem 'service_data_engine'
 ```
 
 And then execute:
-
-    $ bundle
+```shell
+bundle
+```
 
 Or install it yourself as:
+```shell
+gem install service_data_engine
+```
 
-    $ gem install service_data_engine
+## Dependencies and Gotchas
+- This application requires environment variables to connect with the [Engine API](https://github.com/claraprice/engine-api) service.
+
+## Env Vars
+Copy/paste the following into the your local `.env` file. Staging and Production values can be found on the appropriate servers.
+```env
+ENGINE_API_SECRET
+ENGINE_API_TOKEN
+ENGINE_BASE_URL="https://engine-staging.claraprice.com/resources/v36/"
+```
 
 ## Usage
 
-TODO: Write usage instructions here
+The easiest setup is to create a new file within `config/initializers` called `engine-api.rb`.
+```ruby
+ENGINE_API = ServiceDataEngine::Api.new
 
-## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
-
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/service_data_engine.
+# now you can call ENGINE_API anywhere you want
+drg = ENGINE_API.drg('224')
+# => {"id"=>177, "number"=>"244", "name"=>"PERMANENT CARDIAC PACEMAKER IMPLANT WITHOUT CC/MCC", "short_name"=>"Permanent Cardiac Pacemaker Implant", "relative_weight"=>2.1108, "average_price"=>44082, "geometric_mean_los"=>2.3, "arithmetic_mean_los"=>2.7, "price"=>18291, "mcc"=>false, "cc"=>false}
+```
