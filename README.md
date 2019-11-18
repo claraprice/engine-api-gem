@@ -28,7 +28,7 @@ Copy/paste the following into the your local `.env` file. Staging and Production
 ```env
 ENGINE_API_SECRET
 ENGINE_API_TOKEN
-ENGINE_BASE_URL="https://engine-staging.claraprice.com/resources/v36/"
+ENGINE_BASE_URL
 ```
 
 ## Usage
